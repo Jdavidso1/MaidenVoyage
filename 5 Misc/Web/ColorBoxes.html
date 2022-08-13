@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technicolor Boxes</title>
+    <style>
+        body
+        {
+            margin: auto;
+            background-color: dimgrey;
+            height: 90em;
+            width: 90em;
+            border-style: solid;
+            border-color: black;
+        }
+        .box
+        {
+        float: left;
+        height: 10em;
+        width: 10em;
+        }
+    </style>
+    <script>        
+        function randomColor(Id)
+        {
+            var randomColor = Math.floor(Math.random()*16777215).toString(16);
+            var getClass = document.getElementById(Id);
+            getClass.style.backgroundColor = "#" +randomColor;
+        }
+        function addBoxes()
+        {
+            for(i=0;i<81;i++)
+            {
+            var boxes = `<div class="box" id="test${i}" onmouseover ="randomColor('test${i}')"></div>`
+            document.getElementById("Body").innerHTML += boxes;
+            }
+        }
+    </script>
+</head>
+<body id="Body" onload="addBoxes()">
+
+</body>
+</html>

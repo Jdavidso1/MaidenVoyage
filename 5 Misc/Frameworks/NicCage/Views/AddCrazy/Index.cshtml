@@ -1,0 +1,59 @@
+@model IEnumerable<NicCage.Models.NicCageRole>
+
+@{
+    ViewData["Title"] = "INDb: The Most Official Internet Nicolas Cage Database";
+}
+
+<h2>INDb: The Most Official Internet Nicolas Cage Database</h2>
+<p>You've arrived at the most comprehensive and utterly useless archive of Nicolas Cage! Why? I have no idea!</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Picture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CharacterName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MovieTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsHeWeird)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <div>
+                <img src="@Url.Content(@item.Picture)" class="picture"/>
+                </div>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CharacterName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MovieTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsHeWeird)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

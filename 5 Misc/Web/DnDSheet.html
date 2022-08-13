@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+    <script>
+
+        // function calculate()
+        // {
+        //     var str_stat = document.getElementById("str").value;
+        //     var str_mod = Math.floor((str_stat - 10) / 2)
+        //     document.getElementById("str_mod").innerHTML = str_mod;
+        //     var dex_stat = document.getElementById("dex").value;
+        //     var dex_mod = Math.floor((dex_stat - 10) / 2)
+        //     document.getElementById("dex_mod").innerHTML = dex_mod;
+        //     var con_stat = document.getElementById("con").value;
+        //     var con_mod = Math.floor((con_stat - 10) / 2)
+        //     document.getElementById("con_mod").innerHTML = con_mod;
+        //     var int_stat = document.getElementById("int").value;
+        //     var int_mod = Math.floor((int_stat - 10) / 2)
+        //     document.getElementById("int_mod").innerHTML = int_mod;
+        //     var wis_stat = document.getElementById("wis").value;
+        //     var wis_mod = Math.floor((wis_stat - 10) / 2)
+        //     document.getElementById("wis_mod").innerHTML = wis_mod;
+        //     var cha_stat = document.getElementById("cha").value;
+        //     var cha_mod = Math.floor((cha_stat - 10) / 2)
+        //     document.getElementById("cha_mod").innerHTML = cha_mod;
+        // }
+
+        // function calculate()
+        // {
+        //     var stat_list = document.getElementById("stats").getElementsByTagName("p")
+        //     for (var stat of stat_list)
+        //     {
+        //         var stat_inp = stat.getElementsByTagName("input")[0];
+        //         var stat_out = stat.getElementsByTagName("span")[0];
+        //         var stat_mod = Math.floor((stat_inp.value - 10) / 2);
+        //         stat_out.innerHTML = stat_mod;
+        //     }
+        // }
+
+        // var outputs = [];
+        // function calculate()
+        // {
+        //     var inputs = document.getElementsByTagName("input").value;
+        //     for (var i = 0; i < inputs.length; i++)
+        //     {
+        //         outputs.push(Math.floor((inputs[i] - 10) / 2));
+        //     }
+        // }
+
+        function calculate(inputs)
+        {
+                var input = document.getElementsByTagName(inputs).value;
+                var outputs = Math.floor((input - 10) / 2);
+                return outputs;
+        }
+
+    </script>
+</head>
+<body>
+    <!-- <div id="stats"> -->
+    <p>STR:<input id=str type="text"><script>document.write(calculate("str"))</script></p>
+    <p>DEX:<input id=dex type="text"><span id="dex_mod"></span></p>
+    <p>CON:<input id=con type="text"><span id="con_mod"></span></p>
+    <p>INT:<input id=int type="text"><span id="int_mod"></span></p>
+    <p>WIS:<input id=wis type="text"><span id="wis_mod"></span></p>
+    <p>CHA:<input id=cha type="text"><span id="cha_mod"></span></p>
+    <button onclick="calculate()">Calculate!</button>
+    <!-- </div> -->
+</body>
+</html>

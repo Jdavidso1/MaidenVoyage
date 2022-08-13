@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&display=swap" rel="stylesheet">
+    <style>
+        body
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .calculatorBox
+        {
+            position: relative;
+            
+            height: 400px;
+            width: 225px;
+            background-color: #2f4353;
+            background-image: linear-gradient(315deg, #2f4353 0%, #d2ccc4 74%);
+        }
+        .buttonContainer {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            height: 250px;
+            width: 225px;
+            margin-top: 50px;
+        }
+       
+        .numberButton
+        {
+            
+            background-color: rgba(240, 241, 169, 0.39);
+            border: 0.005em solid black;
+            border-radius: 15px;
+            height: 50px;
+            width: 50px;
+            box-shadow: 5px 5px rgba(0, 0, 0, 0.527);
+            
+            
+        }
+   
+        .operatorButton
+        {
+            background-color: rgba(240, 241, 169, 0.39);
+            border: 0.005em solid black;
+            border-radius: 15px;
+            height: 50px;
+            width: 50px;
+            box-shadow: 5px 5px rgba(0, 0, 0, 0.527);
+        }
+        .numberDisplay{
+            background-color: rgba(240, 241, 169, 0.13);
+            height: 60px;
+            
+            font-size: 2.5em;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+
+    </style>
+    <script>    
+        createButton = (CSSclass, onclickValue, buttonValue) => {
+            document.getElementById("numberField").innerHTML += `<button class=${CSSclass} onclick="${onclickValue}('${buttonValue}')">${buttonValue}</button>`;
+        }
+
+        placeButtons = () => {
+            //first row of buttons
+            for(buttonValue=7; buttonValue<=9; buttonValue++){
+                createButton("numberButton","enterValue",buttonValue);
+            }
+            createButton("operatorButton","enterValue","+");
+            //second row of buttons
+            for(buttonValue=4; buttonValue<=6; buttonValue++){
+                createButton("numberButton","enterValue",buttonValue);
+            }
+            createButton("operatorButton","enterValue","-");
+            //third row of buttons
+            for(buttonValue=1; buttonValue<=3; buttonValue++){
+                createButton("numberButton","enterValue",buttonValue);
+            }
+            createButton("operatorButton","enterValue","*");
+            //fourth row of buttons
+            createButton("operatorButton","clearScreen()","AC");
+            createButton("numberButton","enterValue","0");
+            createButton("operatorButton","calculateValue","=");
+            createButton("operatorButton","enterValue","/");
+
+            
+        }
+        enterValue = (keyValue) => {
+            document.getElementById("displayField").innerHTML +=keyValue;
+        }
+        calculateValue = () =>
+        {
+            let equation = document.getElementById("displayField").innerHTML;
+            let answer = eval(equation);
+            document.getElementById("displayField").innerHTML = answer;
+        }
+        clearScreen = () => {
+            document.getElementById('displayField').innerHTML = "";
+        }
+    </script>
+
+</head>
+<body onload="placeButtons()">
+    <div class= "calculatorBox">
+        <div class="numberDisplay" id="displayField"></div>
+        <div class="buttonContainer" id="numberField"></div>
+    </div>
+</body>
+</html>

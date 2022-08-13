@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StickyNotes</title>
+    <style>
+        .corkboard
+        {
+            /* size is small because it takes the randomizer forever to load... solutions? */
+            width: 30em;
+            height: 20em;
+            border: 1em solid brown;
+            background-color: burlywood;
+            align-content: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .note
+        {
+            position: absolute;
+            height: 4em;
+            width: 4em;
+            background-color: gold;
+            border: .1em solid darkgoldenrod;
+            text-align: center;
+            font-family: Verdana;
+            color: darkgoldenrod;
+            
+        }
+        .pixel
+        {
+            position: static;
+            float: left;
+            height: 1em;
+            width: 1em;
+        }
+    </style>
+    
+    <script>
+        function buildBoard()
+        {
+            for (y=0; y<20; y++)
+            {
+                for (x=0; x<30; x++)
+                {
+                    palette = ['burlywood', 'peru', 'sandybrown']
+                    color = palette[Math.floor(Math.random()*3)];
+                    document.getElementById("peg").innerHTML += '<div class="pixel" style="top: ' + y + 'em; left: ' + x + 'em; background-color: ' + color + ';" onmouseover="highlight(event)" onmouseleave="unhighlight(event)" onclick="newSticky(event)"></div>';
+                }
+            }
+        }
+
+        let pixelColor;
+        function highlight()
+        {
+            pixelColor = event.target.style.backgroundColor;
+            event.target.style.backgroundColor = 'palegoldenrod';
+        }
+        function unhighlight()
+        {
+            event.target.style.backgroundColor = pixelColor;
+        }
+        
+        z = 2;
+        function newSticky()
+        {
+            let x = event.target.style.left;
+            let y = event.target.style.top;
+            let q = ((Math.random() * (0 - 20)) - (Math.random() * (0 - 15)));
+            document.getElementById("peg").innerHTML += '<div class="note" style="top: ' + y + '; left: ' + x + '; transform: rotate(' + q + 'deg);" onclick="editSticky(event)">click to type</div>'
+            event.target.style.zIndex = z;
+            z++;
+        }
+
+        function editSticky()
+        {
+            let input = prompt("Please enter your note");
+            event.target.innerHTML = input;
+            event.target.style.zIndex = z++;
+        }
+
+    </script>
+</head>
+<body onload="buildBoard()">
+    <div class="corkboard" id="peg">
+    </div>
+</body>
+</html>

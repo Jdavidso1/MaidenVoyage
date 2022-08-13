@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30517.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day28GardenBoxes", "Day28GardenBoxes.csproj", "{0FE2D602-B025-4CE7-A602-197CC9F6883B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0FE2D602-B025-4CE7-A602-197CC9F6883B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FE2D602-B025-4CE7-A602-197CC9F6883B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FE2D602-B025-4CE7-A602-197CC9F6883B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FE2D602-B025-4CE7-A602-197CC9F6883B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DAEB5EFA-B159-4F65-AFA7-DDCCB404C7B8}
+	EndGlobalSection
+EndGlobal

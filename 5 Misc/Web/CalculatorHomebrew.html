@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <!-- <style>
+        .calculator{
+            height: 42em;
+            width: 18.5em;
+            background-color: darkgray;
+        }
+        .button{
+            height: 5em;
+            width: 5em;
+            background-color: lightgray;
+            border: .1em solid whitesmoke;
+            float: left;
+            /* margin: .5em; */
+        }
+        .display
+        {
+            height: 4em;
+            width: 17em;
+            background-color: lightslategray;
+            border: .2em solid black;
+            margin: .5em;
+        }
+        .text{
+            color: whitesmoke;
+            font-size: 2em;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-align: center;
+        }
+    </style> -->
+    <style>
+        /* .bigbox{
+            
+            height: 200px;
+            width: 200px;
+            background-color: red;
+            float:left;
+        } */
+
+        .calculator{
+            display: grid;
+            grid-template-columns: 52px 52px 52px 52px;
+            padding: 15px;
+            width: 208px;
+            font-size: 20px;
+            margin: auto;
+            border:1px solid black;
+            border-top-left-radius:10px;
+            border-top-right-radius:10px;
+            border-bottom-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+            background-color: rgb(43, 226, 211); 
+        }
+        .button{
+            height: 50px;
+            width: 50px;
+            background-color: yellow;
+            border: 1px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .button:hover {
+        cursor: pointer;
+        background-color: blueviolet
+        }
+        
+        
+        .operator{
+            height: 50px;
+            width: 50px;
+            border: 1px solid black;
+            background-color: magenta;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        } 
+        .operator:hover {
+        cursor: pointer;
+        background-color: blueviolet
+        }
+
+        .display{
+            height: 50px;
+            width: 206px;
+            background-color:lime;
+            border: 1px solid black;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+    </style>
+    <script>
+
+        //WHAT FUNCTIONS DO WE NEED?
+        //Digits (one function, separate inputs)
+        //Operands (unique to each operation? or can we grab the operator character...?)
+        //Clear (wipe the display and memory)
+        //Equals function to display the final result
+
+        //Do we want to limit it to 1 operation and 2 numbers for now?
+            //Could resolve everything within a SINGLE operation function...
+                //Get and store number 1, click operand to determine function, get and store number 2, do them to eachother, equals shows total...
+            //Enter first number, updated on display with each click...
+            //Hit operand, leave first number on screen highlight the operand!
+            //Enter second number, update on each click, highlight goes away on first click...
+            //Hit equals, get total display...
+        //Or should we do like a real calculator and have a running tally...
+                //Get and store number 2, click operand and store that somehow, enter and store number 2, click next operand, recall first operand and perform math then display updated total, set to number 1 and get ready for number 2 again...
+            //Enter first number, updated on display with each click...
+            //Hit operand, leave first number on screen highlight the operand!
+            //Enter second number, update on each click, highlight goes away on first click...
+            //Click next operand, newest total displays on screen, keep operand highlighted...
+            //Continue
+
+        let expression = "";
+        let memory = "";
+        let answer = "";
+        let operator = "";
+
+        function buttonFunction(digit) {
+            expression = expression + digit;
+            document.getElementById("displayText").innerHTML = expression;
+        }
+
+        function operandFunction(sign) {
+            if (sign == "=")
+            {
+                memory = answer + operator + expression;
+                answer = eval(memory);
+                document.getElementById("displayText").innerHTML = answer;
+                expression = "";
+            }
+            else
+            {
+                operator = sign;
+                memory = answer + operator + expression;
+                answer = eval(memory);
+                document.getElementById("displayText").innerHTML = answer;
+                expression = "";
+            }
+
+        }
+        function clearFunction() {
+        expression = "";
+        memory = "";
+        answer = "";
+        operator = "";
+        document.getElementById("displayText").innerHTML = "0";
+        }
+
+    </script>
+</head>
+<body>
+    <div class="calculator">
+        <div class="button" onclick="buttonFunction('1')"><p class="text">1</p></div>
+        <div class="button" onclick="buttonFunction('2')"><p class="text">2</p></div>
+        <div class="button" onclick="buttonFunction('3')"><p class="text">3</p></div>
+        <div class="button" onclick="buttonFunction('4')"><p class="text">4</p></div>
+        <div class="button" onclick="buttonFunction('5')"><p class="text">5</p></div>
+        <div class="button" onclick="buttonFunction('6')"><p class="text">6</p></div>
+        <div class="button" onclick="buttonFunction('7')"><p class="text">7</p></div>
+        <div class="button" onclick="buttonFunction('8')"><p class="text">8</p></div>
+        <div class="button" onclick="buttonFunction('9')"><p class="text">9</p></div>
+        <div class="button" onclick="buttonFunction('0')"><p class="text">0</p></div>
+        <div class="operator" onclick="operandFunction('+')"><p class="text">+</p></div>
+        <div class="operator" onclick="operandFunction('-')"><p class="text">-</p></div>
+        <div class="operator" onclick="operandFunction('*')"><p class="text">*</p></div>
+        <div class="operator" onclick="operandFunction('/')"><p class="text">/</p></div>
+        <div class="operator" onclick="operandFunction('=')"><p class="text">=</p></div>
+        <div class="operator" onclick="clearFunction()"><p class="text">clear</p></div>
+        <div class="display" id="displayText"><p>0</p></div>    
+    </div>
+    
+</body>
+</html>
