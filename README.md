@@ -1,4 +1,4 @@
-# AcademyPittsburghLessons
+# Maiden Voyage!
  
 Archive of early through advanced learning projects across multiple languages. While most are in a functional state, they generally lack polish (especially the testing, don't look at it) as they were intended to be short instructional exercises.
 
